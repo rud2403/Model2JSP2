@@ -33,3 +33,9 @@
   
   Controller - 두개의 파일을 연결 구성(Servlet파일)
   
+  
+ * MVC 패턴에서의 상대경로
+  
+  ./MemberJoinAction.me => 내 프로젝트 명/MemberJoinAction.me
+  ./member/insertForm.jsp => WebContent/member/insertForm.jsp
+  
