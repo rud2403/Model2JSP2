@@ -39,7 +39,7 @@
 	<h3><a href="./MemberInfo.me"> 회원 정보 조회 </a></h3>
 	
 	<h3><a href="./MemberUpdate.me"> 회원 정보 수정 </a></h3>	
-	<h3><a href="deleteForm.jsp"> 회원 정보 탈퇴(삭제) </a></h3>
+	<h3><a href="./MemberDelete.me"> 회원 정보 탈퇴(삭제) </a></h3>
 	
 	<!-- 관리자만 사용가능한 메뉴 생성 -->	
 	
@@ -49,7 +49,7 @@
 		// 참조형 데이터 값 비교시 항상 null 값을 먼저 비교 후 데이터 비교해야한다.
 		// = if(id != null && id.equals("admin"))
 	%>
-			<h3><a href="list.jsp">회원목록보기</a></h3>
+			<h3><a href="./MemberList.me">회원목록보기</a></h3>
 	<%
 		}
 	}	

@@ -75,16 +75,14 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/MemberLogin.me")){
+		}else if(command.equals("/MemberLogin.me")){
 			System.out.println("C : /MemberLogin.me 호출");
 			// 화면을 보여주기=> view페이지로 이동
 			
 			forward = new ActionForward();
 			forward.setPath("./member/loginForm.jsp");
 			forward.setRedirect(false);
-		}
-		else if(command.equals("/MemberLoginAction.me")){
+		}else if(command.equals("/MemberLoginAction.me")){
 			System.out.println("C : /MemberLoginAction.me 호출");
 			// DB 사용 => MemberLoginAction() 객체를 생성해야함.
 			action = new MemberLoginAction();
@@ -94,15 +92,13 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/Main.me")){
+		}else if(command.equals("/Main.me")){
 			System.out.println("C : /Main.me 호출");
 			
 			forward = new ActionForward();
 			forward.setPath("./main/main.jsp");
 			forward.setRedirect(false);
-		}
-		else if(command.equals("/MemberLogout.me")){
+		}else if(command.equals("/MemberLogout.me")){
 			System.out.println("C : /MemberLogout.me 호출");
 			// MemberLogoutAction() 객체 생성
 			action = new MemberLogoutAction();
@@ -112,8 +108,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}
-		else if(command.equals("/MemberInfo.me")){
+		}else if(command.equals("/MemberInfo.me")){
 			System.out.println("C : /MemberInfo.me 호출");
 			// DB정보를 가져와서 view페이지에 출력
 			// MemberInfoAction() 객체 생성
@@ -123,8 +118,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/MemberUpdate.me")){
+		}else if(command.equals("/MemberUpdate.me")){
 			System.out.println("C : /MemberUpdate.me 호출");
 			// DB정보를 -> 화면(view)출력-./member/updateForm.jsp
 			// MemberUpdateAction() 객체 생성
@@ -135,8 +129,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/MemberUpdateProAction.me")){
+		}else if(command.equals("/MemberUpdateProAction.me")){
 			System.out.println("C : /MemberUpdateProAction.me 호출");
 			// 입력받은 정보를 DB에 저장(수정) -> 메인페이지로 이동
 			// MemberUpdateProAction() 객체 생성
@@ -147,8 +140,42 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/MemberDelete.me")){
+			System.out.println("C : /MemberDelete.me 호출");
+			// 정보입력 view -> DB 처리
+			
+			forward = new ActionForward();
+			forward.setPath("./member/deleteForm.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/MemberDeleteAction.me")){
+			System.out.println("C : /MemberDeleteAction.me 호출");
+			// 정보를 전달 받아서 DB에서 삭제
+			// MemberDeleteAction() 객체 생성 
+			action = new MemberDeleteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}else if(command.equals("/MemberList.me")){
+			System.out.println("C : /MemberList.me 호출");
+			// DB사용해서 해당 View출력
+			// MemberListAction() 객체
+			
+			action = new MemberListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-		
 		
 		
 		/******************* 2.페이지 주소 매핑(연결) ********************************/

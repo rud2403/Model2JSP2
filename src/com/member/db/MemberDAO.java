@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -164,11 +166,166 @@ public class MemberDAO {
 	// getMember(id)
 	
 	
+	// updateMember(dto)
+	public int updateMember(MemberDTO dto){
+		int result = -1;
+		
+		try {
+			// 1,2 디비연결
+			conn = getConnection();
+			// 3 sql구문 & pstmt 객체 생성
+			sql = "select pass from itwill_member where id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getId());
+			
+			//4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			//5 데이터 처리 
+			if(rs.next()){
+				// 아이디가 있음
+				if(dto.getPass().equals(rs.getString("pass"))){
+					// 본인 -> 정보 수정
+					// 3 sql/pstmt 객체
+					sql = "update itwill_member set name=?,age=?,gender=?,email=? where id=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, dto.getName());
+					pstmt.setInt(2, dto.getAge());
+					pstmt.setString(3, dto.getGender());
+					pstmt.setString(4, dto.getEmail());
+					pstmt.setString(5, dto.getId());
+					
+					//4 sql 실행
+					result = pstmt.executeUpdate();
+					System.out.println("DAO : 회원정보 수정완료!");
+					
+				}else{
+					// 아이디는 있지만, 비밀번호 오류
+					result = 0;
+				}
+			}else{
+				// 아이디가 없음
+				result = -1;
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return result;
+	}
+	// updateMember(dto) 끝
 	
 	
+	//deleteMember(dto) 시작
+	public int deleteMember(String id, String pass){
+		int result = -1;
+
+		try {
+			// 1,2 디비연결
+			conn = getConnection();
+			// 3 sql구문 & pstmt 객체 생성
+			sql = "select pass from itwill_member where id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			//4 sql 실행
+			rs = pstmt.executeQuery();
+			
+			//5 데이터 처리 
+			if(rs.next()){
+				// 아이디가 있음
+				if(pass.equals(rs.getString("pass"))){
+					// 본인 -> 정보 수정
+					// 3 sql/pstmt 객체
+					sql = "delete from itwill_member where id=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, id);
+					
+					//4 sql 실행
+					result = pstmt.executeUpdate();
+					System.out.println("DAO : 회원정보 수정완료!");
+					
+				}else{
+					// 아이디는 있지만, 비밀번호 오류
+					result = 0;
+				}
+			}else{
+				// 아이디가 없음
+				result = -1;
+			}
+			
+			System.out.println("DAO : 회원정보 삭제 완료");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}		
+		
+		return result;
+	}
+	
+	//deleteMember(dto) 끝
+
+	
+	// getMemberList() 시작
+	public List getMemberList(){
+		List memberList = new ArrayList();
+		
+
+		
+		try {
+			// 1,2 디비연결
+			conn = getConnection();
+			
+			// 3 sql 작성 & pstmt 객체 생성
+			sql = "select * from itwill_member where id != 'admin'";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			// 5 데이터 처리
+			while(rs.next()){
+				MemberDTO dto = new MemberDTO();
+				
+				dto.setAge(rs.getInt("age"));
+				dto.setEmail(rs.getString("email"));
+				dto.setGender(rs.getString("gender"));
+				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				dto.setPass(rs.getString("pass"));
+				dto.setReg_date(rs.getTimestamp("reg_date"));
+				
+				// 리스트 한칸 -> 한명의 정보 저장
+				memberList.add(dto);
+				
+			}
+			
+			System.out.println("DAO : 모든 회원 정보 저장 완료");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeDB();
+		}
+		// 4 sql 실행
+		
+		// 5 데이터 처리
+		
+		return memberList;
+	}
 	
 	
-	
+	// getMemberList() 끝
 	
 	
 	
