@@ -13,6 +13,10 @@
 		// response.sendRedirect("./MemberJoin.me");
 		 response.sendRedirect("./MemberLogin.me");
 		
+		 // 쇼핑몰 - 상품등록 / 관리/ 주문/ 장바구니.. 
+		 
+		 // 관리자 - 상품 등록
+		 
 	
 	%>
 </body>
