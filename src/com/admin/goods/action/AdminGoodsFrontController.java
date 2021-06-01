@@ -42,6 +42,59 @@ public class AdminGoodsFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setPath("./admingoods/admin_godds_write.jsp");
 			forward.setRedirect(false);
+			
+		}else if(command.equals("/GoodsAddAction.ag")){
+			System.out.println("C : /GoodsAddAction.ag  호출");			
+			// GoodsAddAction() 객체 생성
+			action = new GoodsAddAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/AdminGoodsList.ag")){
+			System.out.println("C : /AdminGoodsList.ag 호출");
+			// DB정보를 사용해서 화면에 출력
+			// AdminGoodsListAction() 객체
+			action = new AdminGoodsListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/AdminGoodsModify.ag")){
+			System.out.println("C : /AdminGoodsModify.ag 호출");
+			// DB 정보를 꺼내서 화면에 출력
+			// AdminGoodsModifyFormAction();
+			
+			action = new AdminGoodsModifyFormAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/AdminGoodsModifyAction.ag")){
+			System.out.println("C : /AdminGoodsModifyAction.ag 호출");
+			// DB정보를 처리 페이지(list 이동) 이동
+			// AdminGoodsModifyAction() 객체 생성
+			
+			action = new AdminGoodsModifyAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
 		
 		System.out.println("C : 2.페이지 주소 매핑 완료");

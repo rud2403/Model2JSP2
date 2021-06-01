@@ -19,7 +19,7 @@ public class MemberFrontController extends HttpServlet {
 
 		// 주소를 비교해서 주소에 따른 페이지 처리
 
-		/******************* 1.페이지 주소 파싱 ********************************/
+		/******************* 1.페이지 주소 파싱  시작 ********************************/
 		// String requestURL = request.getRequestURL()+"";
 		// System.out.println(requestURL);
 
@@ -33,9 +33,11 @@ public class MemberFrontController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 		System.out.println("1 : command : " + command);
 
-		/******************* 1.페이지 주소 파싱 ********************************/
+		/******************* 1.페이지 주소 파싱 끝 ********************************/
 
-		/******************* 2.페이지 주소 매핑(연결) ********************************/
+		
+		
+		/******************* 2.페이지 주소 매핑(연결) 시작 ********************************/
 		// DB 사용여부에 따라서 페이지 구성
 		ActionForward forward = null;
 		Action action = null;
@@ -75,6 +77,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("/MemberLogin.me")){
 			System.out.println("C : /MemberLogin.me 호출");
 			// 화면을 보여주기=> view페이지로 이동
@@ -82,6 +85,7 @@ public class MemberFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("./member/loginForm.jsp");
 			forward.setRedirect(false);
+			
 		}else if(command.equals("/MemberLoginAction.me")){
 			System.out.println("C : /MemberLoginAction.me 호출");
 			// DB 사용 => MemberLoginAction() 객체를 생성해야함.
@@ -92,12 +96,14 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("/Main.me")){
 			System.out.println("C : /Main.me 호출");
 			
 			forward = new ActionForward();
 			forward.setPath("./main/main.jsp");
 			forward.setRedirect(false);
+			
 		}else if(command.equals("/MemberLogout.me")){
 			System.out.println("C : /MemberLogout.me 호출");
 			// MemberLogoutAction() 객체 생성
@@ -108,6 +114,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+			
 		}else if(command.equals("/MemberInfo.me")){
 			System.out.println("C : /MemberInfo.me 호출");
 			// DB정보를 가져와서 view페이지에 출력
@@ -118,6 +125,7 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("/MemberUpdate.me")){
 			System.out.println("C : /MemberUpdate.me 호출");
 			// DB정보를 -> 화면(view)출력-./member/updateForm.jsp
@@ -177,10 +185,10 @@ public class MemberFrontController extends HttpServlet {
 			
 		}
 		
-		
-		/******************* 2.페이지 주소 매핑(연결) ********************************/
+		/******************* 2.페이지 주소 매핑(연결) 끝 ********************************/
 
-		/******************* 3.페이지 주소 이동 ********************************/
+		
+		/******************* 3.페이지 주소 이동 시작 ********************************/
 
 		if (forward != null) {
 			// forward 객체 있음 => 페이지 이동정보가 있음
@@ -193,7 +201,7 @@ public class MemberFrontController extends HttpServlet {
 				dis.forward(request, response);
 			}
 		}
-		/******************* 3.페이지 주소 이동 ********************************/
+		/******************* 3.페이지 주소 이동 끝 ********************************/
 
 	}
 
