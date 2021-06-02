@@ -1,8 +1,7 @@
 <%@page import="com.member.db.MemberDTO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,18 +26,19 @@
         <td>가입일</td>
       </tr>
       
-      
-   	  <c:forEach var="i" items="${ memberList }">
-      <tr>
-        <td>${i.id }</td>
-        <td>${i.name }</td>
-        <td>${i.pass }</td>
-        <td>${i.age }</td>
-        <td>${i.gender }</td>
-        <td>${i.email }</td>
-        <td>${i.reg_date }</td>
-      </tr>
-      </c:forEach>
+      <%for(int i=0;i<memberList.size();i++){
+    	    MemberDTO dto = (MemberDTO) memberList.get(i);
+    	  %>
+	      <tr>
+	        <td><%=dto.getId() %></td>
+	        <td><%=dto.getName() %></td>
+	        <td><%=dto.getPass() %></td>
+	        <td><%=dto.getAge() %></td>
+	        <td><%=dto.getGender() %></td>
+	        <td><%=dto.getEmail() %></td>
+	        <td><%=dto.getReg_date() %></td>
+	      </tr>
+      <%} %>
       
     </table>
     

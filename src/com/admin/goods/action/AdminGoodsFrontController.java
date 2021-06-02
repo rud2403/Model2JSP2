@@ -40,7 +40,7 @@ public class AdminGoodsFrontController extends HttpServlet{
 			// 정보를 입력받는 페이지 -> view페이지 이동
 			
 			forward = new ActionForward();
-			forward.setPath("./admingoods/admin_godds_write.jsp");
+			forward.setPath("./admingoods/admin_goods_write.jsp");
 			forward.setRedirect(false);
 			
 		}else if(command.equals("/GoodsAddAction.ag")){

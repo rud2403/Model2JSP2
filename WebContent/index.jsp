@@ -11,13 +11,13 @@
 	<%
 		// index.jsp 페이지
 		// response.sendRedirect("./MemberJoin.me");
-		// response.sendRedirect("./MemberLogin.me");
+		 response.sendRedirect("./MemberLogin.me");
 		
-		 // 쇼핑몰 - 상품등록 / 관리/ 주문/ 장바구니.. 
-		 
-		 // 관리자 - 상품 등록
+		
+		// 쇼핑몰 - 상품등록 / 관리/ 주문/ 장바구니.. 
+		// 관리자 - 상품 등록
 		// response.sendRedirect("./GoodsAdd.ag");
-		 response.sendRedirect("./AdminGoodsList.ag");
+		// response.sendRedirect("./AdminGoodsList.ag");
 	
 	%>
 </body>

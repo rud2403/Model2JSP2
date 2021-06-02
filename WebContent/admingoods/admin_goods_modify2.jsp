@@ -1,7 +1,6 @@
 <%@page import="com.admin.goods.db.GoodsDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +21,7 @@
 		<form action="./AdminGoodsModifyAction.ag" method="post">
 		
 			<!-- 상품 번호 전달 시작 -->
-			<input type="hidden" name="num" value="${dto.num }">
+			<input type="hidden" name="num" value="<%=dto.getNum()%>">
 			<!--  상품 번호 전달 끝 -->
 			
 			<table border="1">
@@ -32,84 +31,92 @@
 						<select	name="category">
 							
 							<option value="outwear"
-							<c:if test="${dto.category eq 'outwear' }">
+							<%if(dto.getCategory().equals("outwear")){ %>
 							 selected
-							 </c:if>>외투</option>
+							<%} %> 
+							 >외투</option>
 							
 							<option value="fulldress"
-							<c:if test="${dto.category eq 'fulldress' }">
+							<%if(dto.getCategory().equals("fulldress")){ %>
 							 selected
-							</c:if>>정장/신사복</option>
+							<%} %>
+							>정장/신사복</option>
 							
 							<option value="Tshirts"
-							<c:if test="${dto.category eq 'Tshirts' }">
+							<%if(dto.getCategory().equals("Tshirts")){ %>
 							 selected
-							</c:if>>티셔츠</option>
+							<%} %>
+							>티셔츠</option>
 							
 							<option value="shirts"
-							<c:if test="${dto.category eq 'shirts' }">
+							<%if(dto.getCategory().equals("shirts")){ %>
 							 selected
-							</c:if>>와이셔츠</option>
+							<%} %>
+							>와이셔츠</option>
 							
 							<option value="pants"
-							<c:if test="${dto.category eq 'pants' }">
+							<%if(dto.getCategory().equals("pants")){ %>
 							 selected
-							</c:if>>바지</option>
+							<%} %>
+							>바지</option>
 							
 							<option value="shoes"
-							<c:if test="${dto.category eq 'shoes' }">
+							<%if(dto.getCategory().equals("shoes")){ %>
 							 selected
-							</c:if>>신발</option>
+							<%} %>
+							>신발</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>상품이름</td>
 					<td>
-						<input type="text" name="name" value="${dto.name}">
+						<input type="text" name="name" value="<%=dto.getName() %>">
 					</td>
 				</tr>
 				<tr>
 					<td>판매가격</td>
 					<td>
-						<input type="text" name="price" value="${dto.price}">
+						<input type="text" name="price" value="<%=dto.getPrice() %>">
 					</td>
 				</tr>
 				<tr>
 					<td>색상</td>
 					<td>
-						<input type="text" name="color" value="${dto.color}">
+						<input type="text" name="color" value="<%=dto.getColor() %>">
 					</td>
 				</tr>
 				<tr>
 					<td>수량</td>
 					<td>
-						<input type="text" name="amount" value="${dto.amount}">
+						<input type="text" name="amount" value="<%=dto.getAmount() %>">
 					</td>
 				</tr>
 				<tr>
 					<td>크기</td>
 					<td>
-						<input type="text" name="size" value="${dto.size}">
+						<input type="text" name="size" value="<%=dto.getSize() %>">
 					</td>
 				</tr>
 				<tr>
 					<td>제품정보</td>
 					<td>
-						<input type="text" name="content" value="${dto.content}">
+						<input type="text" name="content" value="<%=dto.getContent() %>">
 					</td>
 				</tr>
 				<tr>
 					<td>인기상품</td>
 					<td>
 						<input type="radio" name="best"
-						<c:if test="${dto.best eq 1 }">
+						<%if(dto.getBest() == 1){ %>
 						checked
-						</c:if>> 예
+						<%} %>
+						> 예
 						<input type="radio" name="best"
-						<c:if test="${dto.best eq 0 }">
+						<%if(dto.getBest() == 0){ %>
 						checked
-						</c:if>> 아니오
+						<%} %>
+						> 아니오
 					</td>
 				</tr>
 				

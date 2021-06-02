@@ -28,7 +28,7 @@
 	<h2>회원탈퇴(삭제) (model2)</h2>
 
 	<form action="./MemberDeleteAction.me" method="post">
-		<input type="hidden" name="id" value="<%=id%>">
+		<input type="hidden" name="id" value="${id }">
 		비밀번호 : <input type="password" name="pass"><br>
 		
 			<hr>

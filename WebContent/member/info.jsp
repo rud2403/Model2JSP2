@@ -21,19 +21,19 @@
   <table border="1">
     <tr>
       <td>아이디</td>
-      <td><%=mdto.getId() %></td>
+      <td>${mdto.id }</td>
     </tr>
     <tr>
       <td>비밀번호</td>
-      <td><%=mdto.getPass() %></td>
+      <td>${mdto.pass }</td>
     </tr>
     <tr>
       <td>이름</td>
-      <td><%=mdto.getName() %></td>
+      <td>${mdto.name }</td>
     </tr>
     <tr>
       <td>나이</td>
-      <td><%=mdto.getAge() %></td>
+      <td>${mdto.age }</td>
     </tr>
     <tr>
       <td>성별</td>
