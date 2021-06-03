@@ -37,6 +37,18 @@
   <!-- AdminGoodsFrontController 매핑 끝 -->
   
   
+    <!-- GoodsFrontController 매핑 시작 -->
+  <servlet>
+    <servlet-name>GoodsFrontController</servlet-name>
+    <servlet-class>com.goods.action.GoodsFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>GoodsFrontController</servlet-name>
+    <url-pattern>*.go</url-pattern>
+  </servlet-mapping>
+  <!-- GoodsFrontController 매핑 끝 -->
+  
   
   
   

@@ -102,11 +102,11 @@
 				<tr>
 					<td>인기상품</td>
 					<td>
-						<input type="radio" name="best"
+						<input type="radio" name="best" value="1"
 						<c:if test="${dto.best eq 1 }">
 						checked
 						</c:if>> 예
-						<input type="radio" name="best"
+						<input type="radio" name="best" value="0"
 						<c:if test="${dto.best eq 0 }">
 						checked
 						</c:if>> 아니오

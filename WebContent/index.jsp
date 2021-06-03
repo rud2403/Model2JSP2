@@ -11,7 +11,10 @@
 	<%
 		// index.jsp 페이지
 		// response.sendRedirect("./MemberJoin.me");
-		 response.sendRedirect("./MemberLogin.me");
+		// response.sendRedirect("./MemberLogin.me");
+		
+		// 메인페이지 이동
+		response.sendRedirect("./Main.me");
 		
 		
 		// 쇼핑몰 - 상품등록 / 관리/ 주문/ 장바구니.. 
@@ -20,5 +23,7 @@
 		// response.sendRedirect("./AdminGoodsList.ag");
 	
 	%>
+	
+	
 </body>
 </html>

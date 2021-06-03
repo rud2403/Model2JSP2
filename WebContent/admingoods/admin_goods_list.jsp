@@ -54,7 +54,7 @@
 	       <td>${ i.date}</td>
 	       <td>
 	       
-	       <a href="./AdminGoodsModify.ag?num=${ i.num}">수정</a>/<a href="">삭제</a>
+	       <a href="./AdminGoodsModify.ag?num=${ i.num}">수정</a>/<a href="./AdminGoodsDelete.ag?num=${ i.num}">삭제</a>
 	       
 	       </td>
 	     </tr>
