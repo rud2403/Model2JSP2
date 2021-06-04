@@ -37,7 +37,7 @@
   <!-- AdminGoodsFrontController 매핑 끝 -->
   
   
-    <!-- GoodsFrontController 매핑 시작 -->
+  <!-- GoodsFrontController 매핑 시작 -->
   <servlet>
     <servlet-name>GoodsFrontController</servlet-name>
     <servlet-class>com.goods.action.GoodsFrontController</servlet-class>
@@ -49,6 +49,18 @@
   </servlet-mapping>
   <!-- GoodsFrontController 매핑 끝 -->
   
+  
+  <!-- BasketFrontController 매핑 시작 -->
+  <servlet>
+    <servlet-name>BasketFrontController</servlet-name>
+    <servlet-class>com.basket.action.BasketFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>BasketFrontController</servlet-name>
+    <url-pattern>*.ba</url-pattern>
+  </servlet-mapping>
+  <!-- BasketFrontController 매핑 끝 -->  
   
   
   

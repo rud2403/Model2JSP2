@@ -1,4 +1,4 @@
-package com.goods.action;
+package com.basket.action;
 
 import java.io.IOException;
 
@@ -8,13 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// 사용하지 않는 패키지 제거  ctrl + shift + o
 
-public class GoodsFrontController extends HttpServlet{
-
+public class BasketFrontController extends HttpServlet {
+	
 	protected void doProcess(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("C : GoodsFrontController_doProcess() 호출");
+		System.out.println("C : BasketFrontController_doProcess() 호출");
 		
 		/******************* 1.페이지 주소 파싱 ********************************/
 		// 가상주소 전체 가져오기
@@ -32,32 +31,20 @@ public class GoodsFrontController extends HttpServlet{
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/GoodsList.go")){
-			System.out.println("C : /GoodsList.go 호출");
-			// DB정보를 화면이동 없이 출력
-			// GoodsListAction() 객체 생성
-			action = new GoodsListAction();
+		if(command.equals("/BasketAdd.ba")){
+			System.out.println("C : /BasketAdd.ba 호출");
+			// 전달받은 구매정보를 DB에 저장
+			// BasketAddAction() 객체 생성
+			action = new BasketAddAction();
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}else if(command.equals("/GoodsDetail.go")){
-			System.out.println("C : /GoodsDetail.go 호출");
-			// DB정보를 받아서 페이지 이동없이(주소변화X) 출력
-			// GoodsDetailAction() 객체 생성
-			
-			action = new GoodsDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 		}
+		
 		
 		
 		System.out.println("C : 2.페이지 주소 매핑  완료");
@@ -87,14 +74,14 @@ public class GoodsFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("C : GoodsFrontController_doGet() 호출");
+		System.out.println("C : BasketFrontController_doGet() 호출");
 		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("C : GoodsFrontController_doPost() 호출");
+		System.out.println("C : BasketFrontController_doPost() 호출");
 		doProcess(request, response);
 	}
 	

@@ -27,22 +27,22 @@
        <a href="./GoodsList.go?item=best">베스트상품</a>
       </td>
       <td>
-       <a href="./GoodsList.go">외투</a>
+       <a href="./GoodsList.go?item=outwear">외투</a>
       </td>
       <td>
-       <a href="">정장/신사복</a>
+       <a href="./GoodsList.go?item=fulldress">정장/신사복</a>
       </td>
       <td>
-       <a href="">티셔츠</a>
+       <a href="./GoodsList.go?item=Tshirts">티셔츠</a>
       </td>
       <td>
-       <a href="">와이셔츠</a>
+       <a href="./GoodsList.go?item=shirts">와이셔츠</a>
       </td>
       <td>
-       <a href="">바지</a>
+       <a href="./GoodsList.go?item=pants">바지</a>
       </td>
       <td>
-       <a href="">신발</a>
+       <a href="./GoodsList.go?item=">신발</a>
       </td>
     </tr>
     
@@ -67,11 +67,14 @@
     		  GoodsDTO dto = (GoodsDTO) goodsList.get(num);
     		  %>
     		     <td>
-    		         <img src="./upload/<%=dto.getImage().split(",")[0]%>"
-	             	 width="120" height="120"
-	          		 ><br>
-	         	  	<%=dto.getName() %><br>
-	           		<%=dto.getPrice() %>원  <br>
+    		        <img src="./upload/<%=dto.getImage().split(",")[0]%>" width="120" height="120">
+    		        <br>
+	         	  	<a href="./GoodsDetail.go?num=<%=dto.getNum()%>">
+	         	  		<%=dto.getName() %>
+	         	  	</a>
+	         	  	<br>
+	           		<%=dto.getPrice() %>원
+	           		<br>
     		     </td>
     		  <%   		  
     		  num++;

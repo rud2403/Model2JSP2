@@ -109,22 +109,29 @@ public class GoodsDAO {
         
         try {
         	conn = getConnection();
-        	// sql = "select * from itwill_goods";
+        	
+        	//sql = "select * from itwill_goods";
         	
         	SQL.append("select * from itwill_goods");
         	
         	if(item.equals("all")){
-        		
         	}else if(item.equals("best")){
-        		SQL.append(" where best=1");
+        		SQL.append(" where best=?");
         	}else{
         		SQL.append(" where category=?");
         	}
-			pstmt = conn.prepareStatement(sql);
-			
-			// ?
-			
-			
+        	
+        	//pstmt = conn.prepareStatement(sql);
+        	pstmt = conn.prepareStatement(SQL+"");
+        	
+        	// ?
+        	if(item.equals("all")){
+        	}else if(item.equals("best")){
+        		pstmt.setInt(1, 1); // 인기상품-1, 일반상품-0
+        	}else{
+        		pstmt.setString(1, item);
+        	}       	
+        	
 			
 			rs = pstmt.executeQuery();
 			
@@ -157,8 +164,52 @@ public class GoodsDAO {
 		
 		return goodsList;
 	}
-	// getGoodsList(item)
+	// getGoodsList(item) 끝
 	
+	// getGoodsList(num) 시작
+	public GoodsDTO getGoods(int num){
+		GoodsDTO goods = null;
+		
+		try {
+			conn = getConnection();
+			sql = "select * from itwill_goods where num=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				goods = new GoodsDTO();
+				
+				goods.setAmount(rs.getInt("amount"));
+				goods.setBest(rs.getInt("best"));
+				goods.setCategory(rs.getString("category"));
+				goods.setColor(rs.getString("color"));
+				goods.setContent(rs.getString("content"));
+				goods.setDate(rs.getString("date"));
+				goods.setImage(rs.getString("image"));
+				goods.setName(rs.getString("name"));
+				goods.setNum(rs.getInt("num"));
+				goods.setPrice(rs.getInt("price"));
+				goods.setSize(rs.getString("size"));
+				
+			}
+			
+			System.out.println("DAO : 상품 1개 정보 저장완료(Detail)");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			closeDB();
+		}
+		
+		return goods;
+	}
+	
+	
+	// getGoodsList(num) 끝
 	
 
 }
