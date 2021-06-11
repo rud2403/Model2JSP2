@@ -8,6 +8,7 @@
 </head>
 <body>
 	<!-- model2 실행페이지 -->
+	
 	<%
 		// index.jsp 페이지
 		// response.sendRedirect("./MemberJoin.me");
@@ -16,12 +17,10 @@
 		// 메인페이지 이동
 		response.sendRedirect("./Main.me");
 		
-		
 		// 쇼핑몰 - 상품등록 / 관리/ 주문/ 장바구니.. 
 		// 관리자 - 상품 등록
 		// response.sendRedirect("./GoodsAdd.ag");
 		// response.sendRedirect("./AdminGoodsList.ag");
-	
 	%>
 	
 	

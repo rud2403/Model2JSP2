@@ -43,7 +43,36 @@ public class BasketFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/BasketList.ba")){
+			System.out.println("C : /BasketList.ba 호출 ");
+			
+			// BasketListAction 객체 -> 정보 view 페이지 출력
+			action = new BasketListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/BasketDelete.ba")){
+			// 장바구니 정보 DB에서 삭제
+			// BasketDeleteAction
+			action = new BasketDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/OrderAdd.or")){
+			System.out.println("C: /OrderAdd.or 호출");
+			
+			// 주문정보를 전달받아서 DB저장
+			// OrderAddAction
+			
+			
 		}
+		
 		
 		
 		
